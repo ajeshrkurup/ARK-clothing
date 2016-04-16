@@ -1,0 +1,26 @@
+{
+  "name": "ark-clothing",
+  "version": "1.0.0",
+  "description": "Online store for clothing",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajeshrkurup/ARK-clothing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajeshrkurup/ARK-clothing/issues"
+  },
+  "homepage": "https://github.com/ajeshrkurup/ARK-clothing#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "jquery": "^2.2.3",
+    "sqlite3": "^3.1.3"
+  }
+}

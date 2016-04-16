@@ -1,0 +1,100 @@
+body {
+    background-color: lightgoldenrodyellow !important;
+    padding-top: 70px;
+}
+
+
+#displaymsg {
+    margin-top: 20px;
+  visibility: hidden;
+  text-align: center;
+}
+
+#displaymsgReg {
+    margin-top: 20px;
+  visibility: hidden;
+  text-align: center;
+  font-size: 18px;
+}
+
+#displaymsgdel {
+    margin-top: 20px;
+  visibility: hidden;
+  text-align: center;
+  font-size: 18px;
+}
+
+#resultTable1 {
+    padding-top: 20px;
+ visibility: hidden;
+}
+
+#resultTableDisplay1 th {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center ;
+}
+
+#resultTableDisplay1 .trstyle {
+    
+    color: blueviolet;
+    font-size: 22px;
+}
+
+#resultTableDisplay1 td {
+    
+    font-size: 18px;
+    
+}
+
+#logout {
+    visibility: hidden;
+}
+
+#userlogged {
+    font-size: 14px;
+}
+
+#userimage {
+    color: blue;
+    visibility: hidden;
+}
+
+#myModalLabelDel {
+    color : red;
+    font-weight: bold;
+}
+
+#myModalLabel {
+    color : chocolate;
+    font-weight: bold;
+}
+
+#myModalLabelReg {
+    color : darkblue;
+    font-weight: bold;
+}
+
+#newuser {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#logout {
+    
+    margin-left: 20px;
+}
+
+#welcomemsg {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+#welcomemsg h2 {
+    color: darkolivegreen;
+}
+
+#welcomemsg p{
+    font-size: 16px;
+    font-style: italic;
+}

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="description" content="online clothing shop">
+        
+        <title>Welcome to ARK online store</title>
+        
+    <!-- Adding CSS stylesheet -->    
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        
+    <!-- Bootstrap - Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        
+   
+        
+    </head>
+    
+    <body>
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right">
+                        <span id="userimage" class="glyphicon glyphicon-user" aria-hidden="true"></span>    
+                        <span id="userlogged" class="label label-primary"></span>
+                        <button id="logout" type="button" class="btn btn-info">Logout</button>
+                        <button id="signin" type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#signInModal">Sign in</button>
+                        <button id="newuser" type="button" class="btn btn-warning navbar-btn" data-toggle="modal" data-target="#newUserModal">Register</button>
+                        <button id="userdelete" type="button" class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    </form>
+                    
+                </div><!--/.nav-collapse -->
+            </div> <!-- .container -->
+        </nav>
+        
+<!--- ================================================================================================== --->        
+<!-- Modal & Form for Sign In --> 
+<!--- ================================================================================================== --->
+        <form id="signInForm" action="/signIn" method="POST">
+            <div class="modal fade" id="signInModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h2 class="modal-title" id="myModalLabel">Sign In to your Profile</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="userName">Username</label>
+                                <input type="email" class="form-control" id="username" placeholder="Email ID" name="userName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>      
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success id="signInBtn">Sign In</button>
+                            
+                            <div id="displaymsg" class="alert"></div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </form>
+         
+   <!--- ================================================================================================== --->      
+   <!-- Modal & Form for New User --> 
+   <!--- ================================================================================================== --->
+        <form id="newUserForm" action="/newUser" method="POST">
+            <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h2 class="modal-title" id="myModalLabelReg">Register your profile</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Jane Doe" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="jane.doe@example.com" name="email" required>
+                            </div>  
+                            <div class="form-group">
+                                <label for="passwordRegister">Password</label>
+                                <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" required>
+                            </div>  
+                            <div class="form-group">
+                                <label for="passwordRegister2">Re-enter Password</label>
+                                <input type="password" class="form-control" id="passwordRegister2" name="passwordRegister2" required>
+                            </div>      
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        
+                             <div id="displaymsgReg" class="alert"></div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </form>
+         
+         
+    <!--- ================================================================================================== --->
+     <!-- Modal & Account Delete --> 
+     <!--- ================================================================================================== --->
+        <form id="deleteForm" action="/delete" method="POST">
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h2 class="modal-title" id="myModalLabelDel">Delete your Account</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="userName">Username</label>
+                                <input type="email" class="form-control" id="usernamedel" placeholder="Email ID" name="usernamedel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="passworddel" name="passworddel" required>
+                            </div>      
+                        </div>
+                        <div class="modal-footer">
+                        
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger id="deleteBtn">Submit</button>
+                            
+                            <div id="displaymsgdel" class="alert"></div>
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </form>
+         
+
+ <!--- ================================================================================================== --->
+ <!-- Home Page Content --> 
+ <!--- ================================================================================================== --->
+            <div id="welcomemsg" class="container">
+                <h2>Welcome , Please sign in to view the list of members!!!</h2>
+                <p>Not a member ? , Register for free !!!<p>
+            </div>
+ 
+         
+ <!--- ================================================================================================== --->
+ <!-- Table to Display the Result --> 
+ <!--- ================================================================================================== --->
+        <div id="resultTable1" class="container">
+            <table id="resultTableDisplay1" class ="table table-striped table-bordered">
+                <tr>
+                    <th>List of Users</th>
+                </tr>
+            </table>
+         </div>
+
+<!--- ================================================================================================== --->
+     <!-- HTML PART ENDED,  Adding jQuery, bootstrap script -->           
+<!--- ================================================================================================== --->
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  
+        
+    <!-- Bootstrap - Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+          
+        
+ <!--- ================================================================================================== --->
+     <!-- SCRIPT -->           
+<!--- ================================================================================================== --->  
+       <script>
+            $(document).ready(function () {
+                var flag = 0;
+            
+            function hideModal(flag) {
+             
+              if(flag == 1) {
+              $("#signInModal").modal('hide');
+              return;
+              }
+             
+              else if(flag == 2) {
+                  
+              setTimeout(function() {
+              $("#newUserModal").modal('hide');
+              return;
+              }, 2000);
+              
+              }
+            
+              }
+              
+            
+            
+                $("#logout").click(function() {
+                
+                    $("#logout").css("visibility", "hidden");
+                    $("#userimage").css("visibility", "hidden");
+                     $("#signin").css("visibility", "visible");
+                     $("#newuser").css("visibility", "visible");
+                     $("#userdelete").css("visibility", "visible");
+                     $("#welcomemsg").css("display", "block");
+                     $("#userlogged").empty();
+                     $("#resultTableDisplay1").empty();
+                     $("#displaymsg").css("visibility", "hidden");
+                    $("#displaymsg").empty();
+                    $("#displaymsg").removeClass("alert-danger");
+                    $("#displaymsg").removeClass("alert-success");
+                
+                });
+//<--- ==================================================================== -- >          
+      //PASSWORD VALIDATION
+  //<--- ==================================================================== -- >  
+                $('#passwordRegister2').blur(function(){
+                    var pass = $('#passwordRegister').val();
+                    var pass2 = $('#passwordRegister2').val();
+                    if(pass != pass2){
+                        $("#displaymsgReg").css("visibility", "visible");
+                         $("#displaymsgReg").addClass("alert-danger");
+                         $("#displaymsgReg").append("<p>Passwords not matching !!!</p>");
+                    }   
+                });  
+                
+                $('#passwordRegister').blur(function(){
+                    var pass = $('#passwordRegister').val();
+                    var pass2 = $('#passwordRegister2').val();
+                    if(pass != pass2){
+                        $("#displaymsgReg").css("visibility", "visible");
+                         $("#displaymsgReg").addClass("alert-danger");
+                         $("#displaymsgReg").append("<p>Passwords not matching !!!</p>");
+                    }   
+                });  
+                
+                $('#passwordRegister2').focus(function () {
+                        $("#displaymsgReg").empty();
+                        $("#displaymsgReg").css("visibility", "hidden");
+                        $("#displaymsgReg").removeClass("alert-danger");
+                        $("#displaymsgReg").removeClass("alert-success");
+                });   
+                
+                $('#passwordRegister').focus(function () {
+                        $("#displaymsgReg").empty();
+                        $("#displaymsgReg").css("visibility", "hidden");
+                        $("#displaymsgReg").removeClass("alert-danger");
+                        $("#displaymsgReg").removeClass("alert-success");
+                });   
+
+   //<--- ==================================================================== -- >          
+      //REGISTER FORM
+  //<--- ==================================================================== -- >               
+                
+                $('#newUserForm').submit(function(){
+                    flag = 0;
+                    $("#resultTableDisplay1").empty();
+                    
+                    $.post($(this).attr('action'), $(this).serialize(), function(json) {
+                    
+                        if(json === 'error'){
+                            $("#displaymsgReg").css("visibility", "visible");
+                            $("#displaymsgReg").addClass("alert-danger");
+                            $("#displaymsgReg").append("<p>Email ID already registered !!!</p>");
+                        }
+                       else { 
+                            flag = 2;
+                            hideModal(flag);
+                            $("#displaymsgReg").css("visibility", "visible");
+                            $("#displaymsgReg").addClass("alert-success");
+                            $("#displaymsgReg").append("<p>Registered Successfully !!! <br /> Please Sign in to access your account !</p>");
+                            
+                            $("#resultTable1").css("visibility", "visible");
+                            $("#resultTableDisplay1").append("<tr><th colspan='2'>List of Users</th></tr>");
+                            $("#resultTableDisplay1").append("<tr><th>Name</th><th>Email</th></tr>");
+                            
+                        
+                        for(var i=0; i<json.length; i++) {
+                                
+                                $("#resultTableDisplay1").append("<tr><td>"+json[i].name+"</td><td>"+ json[i].username +"</td></tr>");
+                            }
+                            }
+                        }, 'json');
+                    
+                   
+                        $("#displaymsgReg").empty();
+                        $("#displaymsgReg").css("visibility", "hidden");
+                        $("#displaymsgReg").removeClass("alert-danger");
+                        $("#displaymsgReg").removeClass("alert-success");
+                        flag = 0;
+                    
+                    return false;
+                });
+                
+  //<--- ==================================================================== -- >          
+      //SIGN IN FORM
+  //<--- ==================================================================== -- >         
+                $('#signInForm').submit(function(){
+                    flag = 0;
+                    var userlogged = "";
+                    $("#resultTableDisplay1").empty();
+                    $("#userlogged").empty();
+                    
+                  $.post($(this).attr('action'), $(this).serialize(), function(json) {
+                 
+                     if(json === 'error'){
+                       $("#displaymsg").css("visibility", "visible");
+                       $("#displaymsg").addClass("alert-danger");
+                       $("#displaymsg").append("<p>Username and Password not matching !!!</p>");
+                       
+                    }
+                    else {
+                         flag = 1;
+                        hideModal(flag);
+                        $("#displaymsg").css("visibility", "visible");
+                        $("#displaymsg").addClass("alert-success");
+                        $("#displaymsg").append("<p>Sign In Successfull !!!<br /> Please close this window !</p>");
+                        
+                       
+                        userlogged = $("#username").val();
+                        
+                        $("#resultTable1").css("visibility", "visible");
+                        $("#resultTableDisplay1").append("<tr class='trstyle'><th colspan='2'>List of Users</th></tr>");
+                        $("#resultTableDisplay1").append("<tr><th>Name</th><th>Email</th></tr>");
+                    for(var i=0; i<json.length; i++) {
+                            
+                            $("#resultTableDisplay1").append("<tr><td>"+json[i].name+"</td><td>"+ json[i].username +"</td></tr>");
+                        }
+                        
+                        if(flag == 1) {
+                            
+                            $("#logout").css("visibility", "visible");
+                            $("#userimage").css("visibility", "visible");
+                            $("#signin").css("visibility", "hidden");
+                            $("#newuser").css("visibility", "hidden");
+                            $("#userdelete").css("visibility", "hidden");
+                            $("#welcomemsg").css("display", "none");
+                            $("#userlogged").append(userlogged);
+                     
+                    }
+                        }
+                    }, 'json');
+                   
+                    $("#displaymsg").css("visibility", "hidden");
+                    $("#displaymsg").empty();
+                    $("#displaymsg").removeClass("alert-danger");
+                    $("#displaymsg").removeClass("alert-success");
+                    flag = 0;
+                    
+                    return false;
+                });
+                
+      //<--- ==================================================================== -- >          
+      //Account Delete Button
+      //<--- ==================================================================== -- >
+                
+                $('#deleteForm').submit(function(){
+                    flag = 0;
+                    var userlogged = "";
+                    $("#resultTableDisplay1").empty();
+                    $("#userlogged").empty();
+                    
+                  $.post($(this).attr('action'), $(this).serialize(), function(json) {
+                 
+                     if(json === 'error'){
+                       $("#displaymsgdel").css("visibility", "visible");
+                       $("#displaymsgdel").addClass("alert-danger");
+                       $("#displaymsgdel").append("<p>Username and Password not matching !!!</p>");
+                       
+                    }
+                    else if (json === 'success') {
+                         
+                        $("#displaymsgdel").css("visibility", "visible");
+                        $("#displaymsgdel").addClass("alert-success");
+                        userlogged = $("#usernamedel").val();
+                        $("#displaymsgdel").append("<p>User"+ userlogged +" Deleted !!!<br /> Please close this window !</p>");
+                      
+                        }
+                    }, 'json');
+                    
+                    
+                    
+                    $("#displaymsgdel").css("visibility", "hidden");
+                    $("#displaymsgdel").empty();
+                    $("#displaymsgdel").removeClass("alert-danger");
+                    $("#displaymsgdel").removeClass("alert-success");
+                    flag = 0;
+                    
+                    return false;
+                });
+                
+                 
+                
+                    
+                    
+            });
+       </script>
+
+    </body>
+</html>
